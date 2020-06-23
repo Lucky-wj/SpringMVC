@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author WangJun
- * @Date 2020/6/22
+ * @since 2020/6/22
  */
 @Controller
 @RequestMapping("/test")

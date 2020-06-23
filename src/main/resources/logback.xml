@@ -1,0 +1,27 @@
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    <property name="pattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%thread][%logger{35}.%method line:%line][%-5level]:%msg%n"/>
+    <property name="datetime_format" value="yyyyMMdd"/>
+    <property name="log_path" value="logs/"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log_path}SpringMVC.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>SpringMVC.%d{${datetime_format}}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
